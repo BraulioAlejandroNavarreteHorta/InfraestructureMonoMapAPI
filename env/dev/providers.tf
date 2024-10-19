@@ -6,12 +6,12 @@ terraform {
     }
   }
 
-  /*  backend "azurerm" {
-    resource_group_name = "RG-roger"
-    storage_account_name = "ozielaccount"
-    container_name = "712tfstate"
-    key = "terraform.tfstate"
-  } */
+  backend "azurerm" {
+    key                  = "terraform.tfstate"
+    resource_group_name  = "Blob-RG-BraulioNavarrete"
+    storage_account_name = "blobsabraulionavarrete"
+    container_name       = "blob-braulionavarrete"
+  }
 }
 
 provider "azurerm" {
