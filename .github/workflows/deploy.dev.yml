@@ -38,11 +38,11 @@ jobs:
 
       - name: Create SSH Keys from secrets
         run: |
-          mkdir -p ./env/dev/keys
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./env/dev/keys/712mono_server
-          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ./env/dev/keys/712mono_server.pub
-          chmod 777 ./env/dev/keys/712mono_server
-          chmod 777 ./env/dev/keys/712mono_server.pub
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/712mono_server
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/712mono_server.pub
+          chmod 600 ~/.ssh/712mono_server
+          chmod 644 ~/.ssh/712mono_server.pub
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v2

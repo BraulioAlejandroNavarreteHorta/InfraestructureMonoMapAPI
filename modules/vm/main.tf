@@ -126,7 +126,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
 
   admin_ssh_key {
     username   = var.adminuser
-    public_key = file("${var.ssh_key_path}.pub")
+    public_key = file("~/.ssh/712mono_server.pub") # Usa la clave que creaste desde los secretos
   }
 
   provisioner "file" {
@@ -136,7 +136,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
     connection {
       type        = "ssh"
       user        = var.adminuser
-      private_key = file(var.ssh_key_path)
+      private_key = file("~/.ssh/712mono_server") # Usa la clave privada
       host        = self.public_ip_address
     }
   }
@@ -173,7 +173,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
 resource "time_sleep" "wait_2_minutes" {
   depends_on      = [azurerm_linux_virtual_machine.IN-VM]
   create_duration = "120s"
-}   
+}
 
 resource "null_resource" "init_docker" {
   depends_on = [time_sleep.wait_2_minutes]
