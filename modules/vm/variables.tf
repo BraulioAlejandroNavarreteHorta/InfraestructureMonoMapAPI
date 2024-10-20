@@ -38,8 +38,7 @@ variable "server_name" {
 }
 
 variable "ssh_key_path" {
-    type = string
-  
+  default = "~/.ssh/712mono_server"
 }
 
 variable "adminuser" {

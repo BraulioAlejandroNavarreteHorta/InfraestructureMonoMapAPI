@@ -126,7 +126,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
 
   admin_ssh_key {
     username   = var.adminuser
-    public_key = file("~/.ssh/712mono_server.pub") # Usa la clave que creaste desde los secretos
+    public_key = file("~/.ssh/712mono_server.pub")
   }
 
   provisioner "file" {
@@ -136,7 +136,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
     connection {
       type        = "ssh"
       user        = var.adminuser
-      private_key = file("~/.ssh/712mono_server") # Usa la clave privada
+      private_key = file(var.ssh_key_path)
       host        = self.public_ip_address
     }
   }
