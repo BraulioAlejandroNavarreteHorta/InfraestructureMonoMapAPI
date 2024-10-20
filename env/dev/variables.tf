@@ -6,7 +6,6 @@ variable "PORT" {
 }
 variable "MONGO_DB" {
   type    = string
-  default = "IncidentAPI"
 }
 variable "MAIL_SECRET_KEY" {
   type = string
