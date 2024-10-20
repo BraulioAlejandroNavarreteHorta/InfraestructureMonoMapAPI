@@ -42,19 +42,13 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform Init
-        env:
+        env:  # Asegúrate de que las claves SSH se pasen en este paso también
           TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         run: terraform -chdir=env/dev init
 
-      - name: Terraform Plan for Destroy
-        env:
+      - name: Terraform destroy
+        env:  # Las variables SSH también se deben pasar en este paso
           TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-        run: terraform -chdir=env/dev plan -destroy
-
-      - name: Terraform Destroy
-        env:
-          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-        run: terraform -chdir=env/dev destroy --auto-approve -input=false -verbose
+        run: terraform -chdir=env/dev destroy --auto-approve
