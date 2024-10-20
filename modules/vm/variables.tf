@@ -37,8 +37,14 @@ variable "server_name" {
   type = string
 }
 
-variable "ssh_key_path" {
-  default = "~/.ssh/712mono_server"
+variable "ssh_private_key" {
+  description = "The private SSH key used for connection"
+  type        = string
+}
+
+variable "ssh_public_key" {
+  description = "The public SSH key for the VM"
+  type        = string
 }
 
 variable "adminuser" {
@@ -46,11 +52,11 @@ variable "adminuser" {
 }
 
 variable "mongo_url" {
-    type = string
+  type = string
 }
 
 variable "port" {
- type = string 
+  type = string
 }
 
 variable "mongo_db" {
@@ -62,15 +68,15 @@ variable "mail_secret_key" {
 }
 
 variable "mapbox_access_token" {
-  type = string 
+  type = string
 }
 
 variable "mail_service" {
-  type = string 
+  type = string
 }
 
 variable "mail_user" {
-type = string
+  type = string
 }
 
 variable "mongo_initdb_root_username" {
@@ -78,7 +84,7 @@ variable "mongo_initdb_root_username" {
 }
 
 variable "mongo_initdb_root_password" {
-   type = string
+  type = string
 }
 
 variable "domain" {

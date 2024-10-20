@@ -126,7 +126,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
 
   admin_ssh_key {
     username   = var.adminuser
-    public_key = file("~/.ssh/712mono_server.pub")
+    public_key = var.ssh_public_key # Cambia para usar la variable pública en lugar de un archivo
   }
 
   provisioner "file" {
@@ -136,7 +136,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
     connection {
       type        = "ssh"
       user        = var.adminuser
-      private_key = file(var.ssh_key_path)
+      private_key = var.ssh_private_key # Cambia para usar la variable privada en lugar de un archivo
       host        = self.public_ip_address
     }
   }
@@ -164,7 +164,7 @@ resource "azurerm_linux_virtual_machine" "IN-VM" {
     connection {
       type        = "ssh"
       user        = var.adminuser
-      private_key = file(var.ssh_key_path)
+      private_key = var.ssh_private_key # Usa la clave privada directamente
       host        = self.public_ip_address
     }
   }
@@ -180,7 +180,7 @@ resource "null_resource" "init_docker" {
   connection {
     type        = "ssh"
     user        = var.adminuser
-    private_key = file(var.ssh_key_path)
+    private_key = var.ssh_private_key
     host        = azurerm_linux_virtual_machine.IN-VM.public_ip_address
   }
   provisioner "remote-exec" {
