@@ -30,3 +30,11 @@ variable "MONGO_INITDB_ROOT_USERNAME" {
 variable "MONGO_INITDB_ROOT_PASSWORD" {
   type = string
 }
+
+variable "ssh_private_key" {
+  type = string
+}
+
+variable "ssh_public_key" {
+  type = string
+}

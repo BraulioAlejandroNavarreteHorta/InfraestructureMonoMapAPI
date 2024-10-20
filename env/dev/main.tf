@@ -1,4 +1,3 @@
-
 module "dev_vm" {
   source                     = "../../modules/vm"
   environment                = "dev"
@@ -10,7 +9,6 @@ module "dev_vm" {
   nic_name                   = "IN-NIC-Braulio"
   mail_service               = var.MAIL_SERVICE
   security_group_name        = "IN-SG-Braulio"
-  ssh_key_path               = "./keys/712mono_server"
   port                       = var.PORT
   server_name                = "IN-Server-Braulio"
   location                   = "eastus2"
@@ -23,6 +21,9 @@ module "dev_vm" {
   ip_name                    = "IN-IP-Braulio"
   vnet_name                  = "IN-VNET-Braulio"
 
+  # Agregamos las claves SSH
+  ssh_private_key            = var.ssh_private_key
+  ssh_public_key             = var.ssh_public_key
 }
 
 resource "azurerm_resource_group" "RG_BraulioCC" {
