@@ -41,19 +41,19 @@ jobs:
           terraform_version: 1.9.2
           terraform_wrapper: false
 
-      - name: Terraform Plan for Destroy
-        env:
-          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-        run: terraform -chdir=env/dev plan -destroy
-
       - name: Terraform Init
         env:
           TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         run: terraform -chdir=env/dev init
 
-      - name: Terraform destroy
+      - name: Terraform Plan for Destroy
+        env:
+          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
+        run: terraform -chdir=env/dev plan -destroy
+
+      - name: Terraform Destroy
         env:
           TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
