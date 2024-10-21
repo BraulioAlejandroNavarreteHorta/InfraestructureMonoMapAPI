@@ -202,5 +202,20 @@ resource "null_resource" "lara" {
   
 }
 
+resource "null_resource" "hernandez" {
+  connection {
+    type        = "ssh"
+    user        = var.adminuser
+    private_key = var.ssh_private_key
+    host        = azurerm_linux_virtual_machine.IN-VM.public_ip_address
+  }
+  provisioner "remote-exec" {
+    inline = [ "sudo su -c 'touch /home/${var.adminuser}/hernandez.txt'",]
+    
+  }
+  
+}
+
+
 
 ##Levantmiento de la infraestructura 21/10/2024
