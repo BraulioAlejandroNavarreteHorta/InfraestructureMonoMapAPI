@@ -69,7 +69,7 @@ resource "azurerm_network_security_group" "IN_SG" {
   }
   security_rule {
     name                       = "mysql-allow"
-    priority                   = 103
+    priority                   = 104
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
