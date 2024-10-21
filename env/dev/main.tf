@@ -30,3 +30,8 @@ resource "azurerm_resource_group" "RG_BraulioCC" {
   name     = "rc-braulionh"
   location = "eastus2"
 }
+
+resource "azurerm_resource_group" "Navarrete" {
+  name = "rc-navarrete"
+  location = "eastus2"
+}
