@@ -144,7 +144,3 @@ El proceso de despliegue de la infraestructura está automatizado con GitHub Act
 3. Haz clic en el botón "Run workflow" para ejecutar el proceso de destrucción de la infraestructura.
 
 Esto ejecutará el comando `terraform destroy` para eliminar todos los recursos creados en el entorno de desarrollo.
-
-## Contribuciones
-
-Si deseas contribuir a este proyecto, sigue las convenciones de git-flow para la creación de ramas y asegúrate de que tus cambios no afecten el despliegue automático a menos que sea necesario.
