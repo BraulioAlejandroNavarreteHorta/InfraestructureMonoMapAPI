@@ -187,3 +187,5 @@ resource "null_resource" "init_docker" {
     inline = ["sudo su -c 'docker-compose up -d'"]
   }
 }
+
+##Levantmiento de la infraestructura 21/10/2024
